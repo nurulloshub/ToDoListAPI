@@ -1,0 +1,23 @@
+# Core Framework
+fastapi==0.142.2
+uvicorn[standard]==0.32.0
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+aiosqlite==0.20.0
+
+# Data Validation & Settings (Python 3.14 compatible)
+pydantic[email]==2.13.4
+pydantic-settings==2.16.2
+email-validator==2.4.0
+
+# Security
+bcrypt==4.2.0
+PyJWT==2.9.0
+
+# Rate Limiting
+slowapi==0.1.9
+
+# Testing
+pytest==8.3.3
+pytest-asyncio==0.24.0
+httpx==0.27.2

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- ============ AUTH VIEW ============ -->
+  <div id="auth-view" class="view">
+    <div class="auth-card">
+      <h1>📝 Todo List</h1>
+      <p class="subtitle">Sign in or create an account</p>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="register">Register</button>
+      </div>
+
+      <form id="login-form" class="form" novalidate>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+
+      <form id="register-form" class="form hidden" novalidate>
+        <input type="text" name="name" placeholder="Full name" required maxlength="120">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password (min 6 chars)" minlength="6" maxlength="72" required>
+        <button type="submit" class="btn-primary">Create account</button>
+      </form>
+
+      <div id="auth-error" class="error hidden"></div>
+    </div>
+  </div>
+
+  <!-- ============ TODOS VIEW ============ -->
+  <div id="todos-view" class="view hidden">
+    <header class="app-header">
+      <div class="brand">📝 Todo List</div>
+      <div class="user-info">
+        <span id="user-name"></span>
+        <button id="logout-btn" class="btn-secondary">Logout</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <form id="create-form" class="create-form" novalidate>
+        <input type="text" name="title" placeholder="What needs to be done?" required maxlength="200">
+        <input type="text" name="description" placeholder="Description (optional)" maxlength="2000">
+        <button type="submit" class="btn-primary">Add</button>
+      </form>
+
+      <div class="toolbar">
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+        <div class="controls">
+          <input type="search" id="search-input" placeholder="Search…" maxlength="100">
+          <select id="sort-select">
+            <option value="created_at:desc">Newest first</option>
+            <option value="created_at:asc">Oldest first</option>
+            <option value="title:asc">Title A–Z</option>
+            <option value="title:desc">Title Z–A</option>
+            <option value="completed:asc">Incomplete first</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="todos-list" class="todos-list"></div>
+
+      <div id="empty-state" class="empty hidden">
+        <div class="empty-icon">✨</div>
+        <p>Nothing here yet. Add your first todo!</p>
+      </div>
+
+      <div id="pagination" class="pagination hidden">
+        <button id="prev-btn" class="btn-secondary">← Prev</button>
+        <span id="page-info"></span>
+        <button id="next-btn" class="btn-secondary">Next →</button>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
